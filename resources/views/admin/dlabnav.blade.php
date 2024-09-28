@@ -41,16 +41,36 @@
                 </ul>
             </li>
             <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+                <i class="bi bi-book"></i>
+                <span class="nav-text">Academic years</span>
+            </a>
+            <ul aria-expanded="false">
+                <li><a href="{{route('years.create')}}">Add Academic year</a></li>
+
+
+            </ul>
+        </li>
+            <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <i class="bi bi-book"></i>
                     <span class="nav-text">Courses</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="/list_courses">List courses</a></li>
-                    <li><a href="/course">Add course</a></li>
+                    <li><a href="{{route('courses.index')}}">List courses</a></li>
+                    <li><a href="{{route('courses.create')}}">Add course</a></li>
 
 
                 </ul>
             </li>
+            <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+                <i class="bi bi-book"></i>
+                <span class="nav-text">specializations</span>
+            </a>
+            <ul aria-expanded="false">
+                <li><a href="{{route('specializations.create')}}">Add specialization</a></li>
+
+
+            </ul>
+        </li>
             <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <i class="bi bi-people"></i>
                     <span class="nav-text">Instructor</span>
@@ -78,8 +98,8 @@
                     <span class="nav-text">Exams</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="/list_exam">List Exams</a></li>
-                    <li><a href="/Exams_form">Add Exams</a></li>
+                    <li><a href="{{route('exams.index')}}">List Exams</a></li>
+                    <li><a href="{{route('exams.create')}}">Add Exams</a></li>
 
 
                 </ul>

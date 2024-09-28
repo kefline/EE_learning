@@ -24,53 +24,54 @@
                                     <th>Code</th>
                                     <th>Location</th>
                                     <th>Contact</th>
-                                    <th> Associated Department</th> 
+                                    <th>Associated Department</th>
                                     <th>Description</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if ($programs->isEmpty())
+                                @foreach($programs as $program)
                                     <tr>
-                                        <td colspan="9" class="text-center">No programs found.</td>
-                                    </tr>
-                                @else
-                                    @foreach ($programs as $program)
-                                        <tr>
-                                            <td><img class="rounded-circle" width="35"
-                                                    src="images/profile/small/pic1.jpg" alt=""></td>
-                                            <td>{{ $program->name }}</td>
-                                            <td>{{ $program->code }}</td>
-                                            <td>{{ $program->location }}</td>
-                                            <td>{{ $program->contact }}</td>
-                                            <td>{{ $program->department->name ?? 'N/A' }}</td>
-                                            <td>{{ $program->description }}</td>
-                                            <td>
-                                                <span
-                                                    class="badge light {{ $program->status ? 'badge-success' : 'badge-danger' }}">
-                                                    <i
-                                                        class="fa fa-circle {{ $program->status ? 'text-success' : 'text-danger' }} me-1"></i>
-                                                    {{ $program->status ? 'Active' : 'Inactive' }}
+                                        <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
+                                        <td>{{ $program->name }}</td>
+                                        <td>{{ $program->code }}</td>
+                                        <td>{{ $program->location }}</td>
+                                        <td>{{ $program->contact }}</td>
+                                        <td>{{ $program->department->name }}</td>
+                                        <td>{{ $program->description }}</td>
+                                        <td>
+                                            @if ($program->status == 1)
+                                                <span class="badge light badge-success">
+                                                    <i class="fa fa-circle text-success me-1"></i>
+                                                    Active
                                                 </span>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex">
-                                                    <a href="" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                            class="fas fa-pencil-alt"></i></a>
-                                                    <form action="" method=""
-                                                        onsubmit="return confirm('Are you sure?');">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></button>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @endif
+                                            @else
+                                                <span class="badge light badge-danger">
+                                                    <i class="fa fa-circle text-danger me-1"></i>
+                                                    Inactive
+                                                </span>
+                                            @endif
+
+                                        </td>
+                                        <td>
+                                            <div class="d-flex">
+                                                <a href="" class="btn btn-primary shadow btn-xs sharp me-1">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </a>
+                                                <form action="" method="POST" onsubmit="return confirm('Are you sure?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger shadow btn-xs sharp">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
+                            
                         </table>
                     </div>
                 </div>

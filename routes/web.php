@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AcademicYearController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\UserController;
 
@@ -9,6 +11,8 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\SpecializationController;
+use App\Http\Controllers\ExamController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -49,13 +53,9 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/admin_results', [AdminController::class, 'admin_results'])->name('admin.admin_results');
-    Route::get('/programs', [AdminController::class, 'programs'])->name('admin.programs');
-    Route::get('/course', [AdminController::class, 'course'])->name('admin.course');
     Route::get('/Exams_form', [AdminController::class, 'Exams_form'])->name('admin.Exams_forms');
     Route::get('/Add_student', [AdminController::class, 'Add_student'])->name('admin.Add_student');
     Route::get('/Add_instructor', [AdminController::class, 'Add_instructor'])->name('admin.Add_instructor');
-    Route::get('/list_programs', [AdminController::class, 'list_programs'])->name('admin.list_programs');
-    Route::get('/list_courses', [AdminController::class, 'list_courses'])->name('admin.list_courses');
     Route::get('/list_exam', [AdminController::class, 'list_exam'])->name('admin.list_exam');
     Route::get('/list_student', [AdminController::class, 'list_student'])->name('admin.list_student');
     Route::get('list_instructor', [AdminController::class, 'list_instructor'])->name('admin.list_instructor');
@@ -85,6 +85,29 @@ Route::middleware('auth')->group(function () {
     Route::put('programs', [ProgramController::class, 'update'])->name('programs.update');
     Route::delete('programs', [ProgramController::class, 'delete'])->name('programs.delete');
 
+    //courses
+    Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
+    Route::get('courses/create', [CourseController::class, 'create'])->name('courses.create');
+    Route::post('courses', [CourseController::class, 'store'])->name('courses.store');
+    Route::get('courses/view', [CourseController::class, 'view'])->name('courses.view');
+    Route::put('courses', [CourseController::class, 'update'])->name('courses.update');
+    Route::delete('courses', [CourseController::class, 'delete'])->name('courses.delete');
+
+    //years
+    Route::get('years/create',[AcademicYearController::class, 'create'])->name('years.create');
+    Route::post('years', [AcademicYearController::class, 'store'])->name('years.store');
+
+    //specializations
+    Route::get('specializations/create',[SpecializationController::class, 'create'])->name('specializations.create');
+    Route::post('specializations', [SpecializationController::class, 'store'])->name('specializations.store');
+
+    //exams
+    Route::get('exams', [ExamController::class, 'index'])->name('exams.index');
+    Route::get('exams/create', [ExamController::class, 'create'])->name('exams.create');
+    Route::post('exams', [ExamController::class, 'store'])->name('exams.store');
+    Route::get('exams/view', [ExamController::class, 'view'])->name('exams.view');
+    Route::put('exams', [ExamController::class, 'update'])->name('exams.update');
+    Route::delete('exams', [ExamController::class, 'delete'])->name('exams.delete');
 
 });
 require __DIR__ . '/auth.php';
