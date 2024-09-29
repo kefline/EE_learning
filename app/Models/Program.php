@@ -31,4 +31,7 @@ class Program extends Model
     {
         return $this->hasMany(Exam::class, 'program_id');
     }
+    public function users(){
+        return $this->hasMany(User::class,'user_id');
+    }
 }

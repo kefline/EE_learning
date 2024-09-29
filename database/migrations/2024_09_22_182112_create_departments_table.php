@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
-            $table->string('department_name');
-            $table->string('department_code'); 
-            $table->string('department_location');
-            $table->string('department_contact'); 
-            $table->text('department_description')->nullable();
+            $table->string('name');
+            $table->string('code'); 
+            $table->string('location');
+            $table->string('contact'); 
+            $table->text('description')->nullable();
             $table->timestamps();
         });
         

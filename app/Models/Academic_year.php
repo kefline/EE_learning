@@ -20,4 +20,7 @@ class Academic_year extends Model
     {
         return $this->hasMany(Exam::class, 'academic_year_id');
     }
+    public function users(){
+        return $this->hasMany(User::class,'user_id');
+    }
 }

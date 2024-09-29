@@ -2,42 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Academic_year;
 use App\Models\Course;
-use App\Models\Department;
+use App\Models\Specialization;
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Level;
-use App\Models\Program;
+use App\Models\user;
+use App\Models\Department;
 
-class UserController extends Controller
+
+class TeacherController extends Controller
 {
     //
+
     public function index()
     {
-        $users = User::with('level', 'department', 'program', 'courses', 'academicYear') // Use singular names
-            ->where('role_id', 1)
+        $users = User::with('department', 'specialization', 'courses')
+            ->where('role_id', 2)
             ->get();
-    
-        // Fetch other necessary data if needed
-        $levels = Level::all();
-        $departments = Department::all();
-        $programs = Program::all();
+
         $courses = Course::all();
-        $academicYears = Academic_year::all();
-    
-        return view('dents.index', compact('users', 'levels', 'departments', 'programs', 'courses', 'academicYears'));
+        $specializations = Specialization::all();
+        $departments = Department::all();
+
+        return view('Teachers.index', compact('users', 'courses', 'specializations', 'departments'));
     }
-    
+
     public function create()
     {
-        $levels = Level::all();
-        $departments = Department::all();
-        $programs = Program::all();
         $courses = Course::all();
-        $academicYears = Academic_year::all();
-        return view('dents.add', compact('levels', 'departments', 'programs', 'courses', 'academicYears'));
+        $specializations = Specialization::all();
+        $departments = Department::all();
+
+        return view('Teachers.add', compact('courses', 'specializations', 'departments'));
     }
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -52,26 +49,27 @@ class UserController extends Controller
             'academic_year_id' => 'nullable|integer|exists:academic_years,id',
             'course_id' => 'required|array',
             'course_id.*' => 'integer|exists:courses,id',
-            'status' => 'required|integer',
-            'reg_no' =>'required|string',
+            'status' => 'required|integer'
         ]);
+      
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'phone' => $request->phone,
-            'role_id' => 1,
+            'role_id' => 2,
             'department_id' => $request->department_id,
-             'level_id' => $request->level_id,
+            //  'level_id' => $request->level_id,
             'program_id' => $request->program_id,
-            'status' => $request->status,
-             'academic_year_id' => $request->academic_year_id,
-             'reg_no'=>$request->reg_no,
+            'specialization_id' => $request->specialization_id,
+            'status' => $request->status
+            //  'academic_year_id' => $request->academic_year_id,
         ]);
+
+
         $selectedCourses = $request->input('course_id');
         $user->courses()->sync($selectedCourses);
-        return redirect()->back()->with('success', 'student created and courses added successfully!');
-        
+
+        return redirect()->back()->with('success', 'Instructor created and courses added successfully!');
     }
-    
 }

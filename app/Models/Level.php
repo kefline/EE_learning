@@ -19,4 +19,7 @@ class Level extends Model
     {
         return $this->belongsToMany(Department::class, 'department_levels', 'level_id', 'department_id');
     }
+    public function users(){
+        return $this->hasMany(User::class,'user_id');
+    }
 }

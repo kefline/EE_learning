@@ -28,7 +28,7 @@ class User extends Authenticatable
         'program_id',
         'specialization_id',
         'academic_year_id',
-
+        'status',
     ];
 
     /**
@@ -45,41 +45,61 @@ class User extends Authenticatable
     {
         parent::boot();
 
-        static::creating(function ($model) {
-            $model->role_id = 3;
-        });
+        // Removing this unless you want it to always set role_id to 3
+        // static::creating(function ($model) {
+        //     $model->role_id = 3;
+        // });
 
-        static::deleting(function ($model) {
-            $model->role_id = 3;
-        });
+        // static::deleting(function ($model) {
+        //     $model->role_id = 3;
+        // });
     }
-
-    // public function newQuery()
-    // {
-    //     $query = parent::newQuery();
-
-
-    //     $query->where( 'role_id', 3);
-
-    //     return $query;
-    // }
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast to native types.
      *
-     * @return array<string, string>
+     * @var array<string, string>
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+
+    /**
+     * Relationship to Role
+     */
+    public function role()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->belongsTo(Role::class); 
     }
-    public function role(){
-        return $this->belongsTo(User::class);
+
+    public function specialization()
+    {
+        return $this->belongsTo(Specialization::class);
     }
-    public function courses(){
-        return $this->belongsToMany(Course::class);
+
+    public function department() // Singular form for relationship
+    {
+        return $this->belongsTo(Department::class, 'department_id'); 
+    }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'user_course'); 
+    }
+
+    public function level() // Singular form for relationship
+    {
+        return $this->belongsTo(Level::class, 'level_id');
+    }
+
+    public function program() // Singular form for relationship
+    {
+        return $this->belongsTo(Program::class, 'program_id');
+    }
+
+    public function academicYear() // Singular form for relationship
+    {
+        return $this->belongsTo(Academic_year::class, 'academic_year_id');
     }
 }

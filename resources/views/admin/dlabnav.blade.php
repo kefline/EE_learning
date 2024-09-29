@@ -76,8 +76,8 @@
                     <span class="nav-text">Instructor</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="/list_instructor">List instructors</a></li>
-                    <li><a href="/Add_instructor">Add instructor</a></li>
+                    <li><a href="{{route('Teachers.index')}}">List instructors</a></li>
+                    <li><a href="{{route('Teachers.create')}}">Add instructor</a></li>
 
 
                 </ul>
@@ -87,8 +87,8 @@
                     <span class="nav-text">students</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="/list_instructor">List Students</a></li>
-                    <li><a href="/Add_student">Add Student</a></li>
+                    <li><a href="{{route('dents.index')}}">List Students</a></li>
+                    <li><a href="{{route('dents.create')}}">Add Student</a></li>
 
 
                 </ul>

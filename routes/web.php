@@ -13,7 +13,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\SpecializationController;
 use App\Http\Controllers\ExamController;
-
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -53,12 +53,6 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/admin_results', [AdminController::class, 'admin_results'])->name('admin.admin_results');
-    Route::get('/Exams_form', [AdminController::class, 'Exams_form'])->name('admin.Exams_forms');
-    Route::get('/Add_student', [AdminController::class, 'Add_student'])->name('admin.Add_student');
-    Route::get('/Add_instructor', [AdminController::class, 'Add_instructor'])->name('admin.Add_instructor');
-    Route::get('/list_exam', [AdminController::class, 'list_exam'])->name('admin.list_exam');
-    Route::get('/list_student', [AdminController::class, 'list_student'])->name('admin.list_student');
-    Route::get('list_instructor', [AdminController::class, 'list_instructor'])->name('admin.list_instructor');
 
     //levels
     // Route::get('levels', [LevelController::class, 'index'])->name('levels.index');
@@ -108,6 +102,24 @@ Route::middleware('auth')->group(function () {
     Route::get('exams/view', [ExamController::class, 'view'])->name('exams.view');
     Route::put('exams', [ExamController::class, 'update'])->name('exams.update');
     Route::delete('exams', [ExamController::class, 'delete'])->name('exams.delete');
+
+    //instructors
+    Route::get('Teachers', [TeacherController::class, 'index'])->name('Teachers.index');
+    Route::get('Teachers/create', [TeacherController::class, 'create'])->name('Teachers.create');
+    Route::post('Teachers', [TeacherController::class, 'store'])->name('Teachers.store');
+    Route::get('Teachers/view', [TeacherController::class, 'view'])->name('Teachers.view');
+    Route::put('Teachers', [TeacherController::class, 'update'])->name('Teachers.update');
+    Route::delete('Teachers', [TeacherController::class, 'delete'])->name('Teachers.delete');
+
+    //stutents
+    Route::get('dents', [UserController::class, 'index'])->name('dents.index');
+    Route::get('dents/create', [UserController::class, 'create'])->name('dents.create');
+    Route::post('dents', [UserController::class, 'store'])->name('dents.store');
+    Route::get('dents/view', [UserController::class, 'view'])->name('dents.view');
+    Route::put('dents', [UserController::class, 'update'])->name('dents.update');
+    Route::delete('dents', [UserController::class, 'delete'])->name('dents.delete');
+
+
 
 });
 require __DIR__ . '/auth.php';
