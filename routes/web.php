@@ -15,6 +15,7 @@ use App\Http\Controllers\SpecializationController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChartController;
 
 Route::get('/', function () {
     return redirect('login');
@@ -118,7 +119,9 @@ Route::middleware('auth')->group(function () {
     Route::get('dents/view', [UserController::class, 'view'])->name('dents.view');
     Route::put('dents', [UserController::class, 'update'])->name('dents.update');
     Route::delete('dents', [UserController::class, 'delete'])->name('dents.delete');
-
+    
+    //chart
+    Route::get('/user-activity-chart', [ChartController::class, 'getUserActivity']);
 
 
 });
