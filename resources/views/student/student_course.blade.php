@@ -1,81 +1,9 @@
 @extends('layout.student_app')
 @section('title', 'student_course')
 @section('content')
-    <div class="row">
-        <div class="widget-heading d-flex justify-content-between align-items-center">
-            <h3 class="m-0">Popular This Week</h3>
-            <a href="courses.html" class="btn btn-primary btn-sm">View all</a>
-        </div>
-        <div class="row">
-            <div class="swiper course-slider">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="widget-courses align-items-center d-flex justify-content-between flex-wrap">
-                                    <div class="d-flex align-items-center flex-wrap">
-                                        <img src="/Assets/images/svg/color-palette.svg" alt="">
-                                        <div class="flex-1 ms-3">
-                                            <h4>Graphic</h4>
-                                            <span>Lorem ipsum dolor</span>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);"><i class="las la-angle-right text-primary"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="widget-courses align-items-center d-flex justify-content-between flex-wrap">
-                                    <div class="d-flex align-items-center flex-wrap">
-                                        <img src="/Assets/images/svg/education-website.svg" alt="">
-                                        <div class="flex-1 ms-3">
-                                            <h4>Coading</h4>
-                                            <span>Lorem ipsum dolor</span>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);"><i class="las la-angle-right text-primary"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="widget-courses align-items-center d-flex justify-content-between flex-wrap">
-                                    <div class="d-flex align-items-center flex-wrap">
-                                        <img src="/Assets/images/svg/brain.svg" alt="">
-                                        <div class="flex-1 ms-3">
-                                            <h4>Soft Skill</h4>
-                                            <span>Lorem ipsum dolor</span>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);"><i class="las la-angle-right text-primary"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="widget-courses align-items-center d-flex justify-content-between flex-wrap">
-                                    <div class="d-flex align-items-center flex-wrap">
-                                        <img src="/Assets/images/svg/microscope.svg" alt="">
-                                        <div class="flex-1 ms-3">
-                                            <h4>Science</h4>
-                                            <span>Lorem ipsum dolor</span>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);"><i class="las la-angle-right text-primary"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    
+
+       
         <div class="widget-heading d-flex justify-content-between align-items-center">
             <h3 class="m-0">All Courses</h3>
             <a href="courses.html" class="btn btn-primary btn-sm">View all</a>
@@ -358,36 +286,23 @@
                 </ul>
             </div>
         </div>
-    </div>
+    
 @endsection
 @section('scripts')
-<script src="/Assets/vendor/global/global.min.js"></script>
-<script src="/Assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-<script src="/Assets/vendor/swiper/js/swiper-bundle.min.js"></script>
-<script src="/Assets/js/dlab.carousel.js"></script>
-<script src="/Assets/js/custom.js"></script>
-<script src="/Assets/js/dlabnav-init.js"></script>
-<script src="/Assets/js/demo.js"></script>
-<script src="/Assets/js/styleSwitcher.js"></script>
-<script>
-    $(document).ready(function() {
-        $(".pagination-down a").on('click', function() {
-            $(".pagination-down a").removeClass("active");
-            $(this).addClass("active");
+    <script src="/Assets/vendor/global/global.min.js"></script>
+    <script src="/Assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+    <script src="/Assets/vendor/swiper/js/swiper-bundle.min.js"></script>
+    <script src="/Assets/js/dlab.carousel.js"></script>
+    <script src="/Assets/js/custom.js"></script>
+    <script src="/Assets/js/dlabnav-init.js"></script>
+    <script src="/Assets/js/demo.js"></script>
+    <script src="/Assets/js/styleSwitcher.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".pagination-down a").on('click', function() {
+                $(".pagination-down a").removeClass("active");
+                $(this).addClass("active");
+            });
         });
-    });
-</script>
+    </script>
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
-

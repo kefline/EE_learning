@@ -23,4 +23,7 @@ class Academic_year extends Model
     public function users(){
         return $this->hasMany(User::class,'user_id');
     }
+    public function questions(){
+        return $this->hasMany(Question::class);
+    }
 }

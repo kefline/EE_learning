@@ -97,6 +97,16 @@
                 </ul>
             </li>
             <li>
+                <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <span class="nav-text">Questions</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{{ route('questions.index') }}">List Questions</a></li>
+                    <li><a href="{{ route('questions.create') }}">Add Questions</a></li>
+                </ul>
+            </li>
+            <li>
                 <a href="/admin_results" aria-expanded="false">
                     <i class="bi bi-trophy"></i>
                     <span class="nav-text">Results</span>

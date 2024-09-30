@@ -33,5 +33,8 @@ public function users()
 {
     return $this->belongsToMany(User::class, 'user_course'); // 'user_course' is the pivot table name
 }
+public function questions(){
+    return $this->hasMany(Question::class);
+}
 
 }
