@@ -36,5 +36,8 @@ public function users()
 public function questions(){
     return $this->hasMany(Question::class);
 }
+public function assignment(){
+    return $this->hasMany(Assignment::class);
+}
 
 }

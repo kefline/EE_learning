@@ -16,10 +16,18 @@
                     <span class="nav-text">Students</span>
                 </a></li>
 
-            <li><a href="/instructor_assignments" class="" aria-expanded="false">
-                    <i class="bi bi-pen"></i>
-                    <span class="nav-text">Assignments</span>
-                </a></li>
+                <li class="dropdown">
+                    <a class="has-arrow" href="javascript:void(0);" aria-expanded="false">
+                        <i class="bi bi-pencil"></i>
+                        <span class="nav-text">Assignments</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a href="{{ route('assignments.index') }}">View Assignments</a></li>
+                        <li><a href="{{ route('assignments.create') }}">Add Assignments</a></li>
+                    </ul>
+                </li>
+                
+
 
             <li><a href="/instructor_grades" class="" aria-expanded="false">
                     <i class="bi bi-pencil-square"></i>
@@ -35,7 +43,7 @@
                     <i class="bi bi-folder"></i>
                     <span class="nav-text">Resources</span>
                 </a>
-                
+
             </li>
 
             <li><a href="/notifications" class="" aria-expanded="false">
@@ -48,14 +56,14 @@
                     <span class="nav-text">Analytics</span>
                 </a></li>
 
-            
+
 
             <li><a href="/help" class="" aria-expanded="false">
                     <i class="bi bi-question-circle"></i>
                     <span class="nav-text">Help</span>
                 </a></li>
 
-            
+
 
             <li><a href="/profile" class="" aria-expanded="false">
                     <i class="bi bi-person"></i>

@@ -16,7 +16,7 @@
                     <span class="nav-text">Courses</span>
                 </a></li>
 
-            <li><a href="/student_assignments" aria-expanded="false">
+            <li><a href="{{route('Task.index')}}" aria-expanded="false">
                     <i class="bi bi-file-earmark-text"></i>
                     <span class="nav-text">Assignments</span>
                 </a></li>

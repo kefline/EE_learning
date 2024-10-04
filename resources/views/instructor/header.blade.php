@@ -3,9 +3,7 @@
         <nav class="navbar navbar-expand">
             <div class="collapse navbar-collapse justify-content-between">
                 <div class="header-left">
-                    <div class="dashboard_bar">
-                        Dashboard
-                    </div>
+                    
                 </div>
                 <div class="navbar-nav header-right">
                     <div class="nav-item d-flex align-items-center">
@@ -23,7 +21,7 @@
                     </div>
                     <div class="dlab-side-menu">
                         <div class="search-coundry d-flex align-items-center">
-                            <img src="/assets/images/United.png" alt="">
+                            <img src="/Assets/images/United.png" alt="">
                             <select class="default-select dashboard-select image-select">
                                 <option data-display="Eng">Eng</option>
                                 <option value="2">Af</option>

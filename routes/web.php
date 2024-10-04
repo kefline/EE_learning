@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AcademicYearController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\UserController;
@@ -17,7 +18,8 @@ use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\QuestionController;
-
+use App\Http\Controllers\StudentAssignmentController;
+use App\Http\Controllers\TaskController;
 
 Route::get('/', function () {
     return redirect('login');
@@ -31,7 +33,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/instructor_dashboard', [InstructorController::class, 'instructor_dashboard'])->name('instructor.dashboard');
     Route::get('/instructor_course', [InstructorController::class, 'instructor_course'])->name('instructor.instructor_course');
     Route::get('/instructor_student', [InstructorController::class, 'instructor_student'])->name('instructor.instructor_student');
-    Route::get('/instructor_assignments', [InstructorController::class, 'instructor_assignments'])->name('instructor.instructor_assignments');
     Route::get('/instructor_grades', [InstructorController::class, 'instructor_grades'])->name('instructor.instructor_grades');
     Route::get('/instructor_schedule', [InstructorController::class, 'instructor_schedule'])->name('instructor.instructor_schedule');
     Route::get('/resources', [InstructorController::class, 'resources'])->name('instructor.resources');
@@ -42,7 +43,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/student_profile', [StudentController::class, 'student_profile'])->name('student.profile');
     Route::get('/student_course', [StudentController::class, 'student_course'])->name('student.course');
-    Route::get('/student_assignments', [StudentController::class, 'student_assignments'])->name('student.assignments');
     Route::get('/question_level', [StudentController::class, 'question_level'])->name('student.question_level');
     Route::get('/question_type', [StudentController::class, 'question_type'])->name('student.question_type');
     Route::get('take', [StudentController::class, 'take'])->name('student.take');
@@ -91,11 +91,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('courses', [CourseController::class, 'delete'])->name('courses.delete');
 
     //years
-    Route::get('years/create',[AcademicYearController::class, 'create'])->name('years.create');
+    Route::get('years/create', [AcademicYearController::class, 'create'])->name('years.create');
     Route::post('years', [AcademicYearController::class, 'store'])->name('years.store');
 
     //specializations
-    Route::get('specializations/create',[SpecializationController::class, 'create'])->name('specializations.create');
+    Route::get('specializations/create', [SpecializationController::class, 'create'])->name('specializations.create');
     Route::post('specializations', [SpecializationController::class, 'store'])->name('specializations.store');
 
     //exams
@@ -121,7 +121,7 @@ Route::middleware('auth')->group(function () {
     Route::get('dents/view', [UserController::class, 'view'])->name('dents.view');
     Route::put('dents', [UserController::class, 'update'])->name('dents.update');
     Route::delete('dents', [UserController::class, 'delete'])->name('dents.delete');
-    
+
     //chart
     Route::get('/user-activity-chart', [ChartController::class, 'getUserActivity']);
 
@@ -132,8 +132,22 @@ Route::middleware('auth')->group(function () {
     Route::get('questions/view', [QuestionController::class, 'view'])->name('questions.view');
     Route::put('questions', [QuestionController::class, 'update'])->name('questions.update');
     Route::delete('questions', [QuestionController::class, 'delete'])->name('questions.delete');
-    
 
+
+    //instrructor assignments
+    Route::get('assignments', [AssignmentController::class, 'index'])->name('assignments.index');
+    Route::get('assignments/create', [AssignmentController::class, 'create'])->name('assignments.create');
+    Route::post('assignments', [AssignmentController::class, 'store'])->name('assignments.store');
+    Route::get('assignments/view', [AssignmentController::class, 'view'])->name('assignments.view');
+
+    Route::get('assignments/{assignment}/edit', [AssignmentController::class, 'edit'])->name('assignments.edit');
+    Route::put('assignments/{assignment}', [AssignmentController::class, 'update'])->name('assignments.update');
+    Route::delete('assignments/{assignment}', [AssignmentController::class, 'destroy'])->name('assignments.destroy');
+    Route::get('assignments/{assignment}/upload', [AssignmentController::class, 'upload'])->name('assignments.upload');
+    Route::post('assignments/{assignment}/upload', [AssignmentController::class, 'handleUpload'])->name('assignments.handleUpload');
+
+    //student Assignments
+    Route::get('Tasks', [TaskController::class, 'index'])->name('Task.index');
 
 });
 require __DIR__ . '/auth.php';

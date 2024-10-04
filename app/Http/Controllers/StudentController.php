@@ -18,9 +18,11 @@ class StudentController extends Controller
     public function student_course(){
         return view('student.student_course');
     }
-    public function student_assignments(){
-        return view('student.student_assignments');
-    }
+    // public function student_assignments(){
+
+        
+    //     return view('student.student_assignments');
+    // }
     public function question_level(){
         return view('student.question_level');
     }
