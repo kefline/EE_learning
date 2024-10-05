@@ -11,7 +11,7 @@
                             style="font-size: 1.75rem; cursor: pointer; color:red;"></i>
                         <span class="tooltip-text"
                             style="display:none; position:absolute; font-size:0.9rem; background-color:#007bff; color:#fff; padding:5px; border-radius:5px; top:50px; z-index:1;">Add
-                            Program</span>
+                            Exam</span>
                     </a>
                 </div>
                 <div class="card-body">
@@ -45,14 +45,14 @@
 
                                     <td>
                                         @if ($exam->status == 1)
-                                            <span class="badge light badge-success">
-                                                <i class="fa fa-circle text-success me-1"></i>
-                                                Active
-                                            </span>
-                                        @elseif ($exam->status == 2)
                                             <span class="badge light badge-danger">
                                                 <i class="fa fa-circle text-danger me-1"></i>
-                                                Inactive
+                                                completed
+                                            </span>
+                                        @elseif ($exam->status == 2)
+                                            <span class="badge light badge-success">
+                                                <i class="fa fa-circle text-success me-1"></i>
+                                                upcoming
                                             </span>
                                         @elseif ($exam->status == 3)
                                             <span class="badge light badge-warning">

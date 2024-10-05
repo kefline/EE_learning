@@ -8,6 +8,15 @@
                     <h4 class="card-title font-weight-bold">Add Exam</h4>
                 </div>
                 <div class="card-body">
+                     @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                     <form action="{{ route('exams.store') }}" method="POST">
                         @csrf
                         <div class="row">
@@ -46,12 +55,12 @@
                             <div class="mb-3 col-md-6">
                                 <select id="status" class="form-control" name="status" required>
                                     <option value="" disabled selected>Select Status</option>
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>Active</option>
-                                    <option value="2" {{ old('status') == '2' ? 'selected' : '' }}>Inactive</option>
-                                    <option value="3" {{ old('status') == '3' ? 'selected' : '' }}>Pending</option>
+                                    <option value="1" {{ old('status') == 'completed' ? 'selected' : '' }}>Completed</option>
+                                    <option value="2" {{ old('status') == 'upcoming' ? 'selected' : '' }}>Upcoming</option>
+                                    <option value="3" {{ old('status') == 'pending' ? 'selected' : '' }}>Pending</option>
                                 </select>
                             </div>
-
+                            
 
                         </div>
 

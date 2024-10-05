@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('deadline');
             $table->integer('status');
             $table->integer('question_no');
+            $table->text('description');
 
 
 

@@ -15,6 +15,8 @@
     <link href="/Assets/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 	<link href="/Assets/vendor/swiper/css/swiper-bundle.min.css" rel="stylesheet">
     <link href="/Assets/vendor/fullcalendar/css/main.min.css" rel="stylesheet">
+    <link href="/Assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+
 
 
 

@@ -18,6 +18,7 @@ class Question extends Model
         "deadline",
         "question_no",
         "status",
+        "description"
     
     ];
     public function academicYear(){
@@ -30,4 +31,8 @@ class Question extends Model
     public function exam(){
         return $this->belongsTo(Exam::class);
     }
+    public function questionlevels(){
+        return $this->belongsTo(Questionlevel::class);
+    }
+    
 }

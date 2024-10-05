@@ -22,7 +22,6 @@ class Exam extends Model
         return $this->belongsTo(Program::class, 'program_id');
     }
 
-    // Relationship with Academic_year
     public function academicYear()
     {
         return $this->belongsTo(Academic_year::class, 'academic_year_id');
@@ -30,4 +29,5 @@ class Exam extends Model
     public function questions(){
         return $this->hasMany(Question::class);
     }
+   
 }

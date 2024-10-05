@@ -1,7 +1,6 @@
-@extends('layout.app')
+@extends('layout.instructor_app')
 @section('title','Add questions')
 @section('content')
-
 <div class="row justify-content-center">
     <div class="col-xl-12 col-lg-12 col-md-12">
         <div class="card shadow-sm" style="padding: 40px; border-radius: 8px; width: 100%;">
@@ -20,7 +19,7 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('questions.store') }}" method="POST">
+                <form action="{{route('instructor_questions.store')}}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="mb-3 col-md-6" >
@@ -156,4 +155,13 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script src="/Assets/vendor/global/global.min.js"></script>
+<script src="/Assets/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+
+<script src="/Assets/js/custom.js"></script>
+<script src="/Assets/js/dlabnav-init.js"></script>
+<script src="/Assets/js/demo.js"></script>
+<script src="/Assets/js/styleSwitcher.js"></script>
 @endsection

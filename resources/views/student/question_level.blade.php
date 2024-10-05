@@ -19,25 +19,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($questions as $question)
                             <tr>
                                 <td>01</td>
-                                <td>What is an algorithm?</td>
-                                <td><span class="badge light badge-success" style="margin-right: 10px;">Hard</span></td>
+                                <td>{{$question->name}}</td>
+                                <td><span class="badge light badge-success" style="margin-right: 10px;">{{$question->level}}</span></td>
                                 <td><button class="btn btn-primary" onclick="startQuestion('01')">Start</button></td>
                             </tr>
-                            <tr>
-                                <td>02</td>
-                                <td>Explain the concept of recursion.</td>
-                                <td><span class="badge light badge-warning" style="margin-right: 10px;">Medium</span>
-                                </td>
-                                <td><button class="btn btn-primary" onclick="startQuestion('02')">Start</button></td>
-                            </tr>
-                            <tr>
-                                <td>03</td>
-                                <td>What is the time complexity of binary search?</td>
-                                <td><span class="badge light badge-danger" style="margin-right: 10px;">Easy</span></td>
-                                <td><button class="btn btn-primary" onclick="startQuestion('03')">Start</button></td>
-                            </tr>
+                       
+                            @endforeach
+                          
+                           
                         </tbody>
                     </table>
                 </div>

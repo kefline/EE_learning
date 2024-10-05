@@ -6,6 +6,7 @@ use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\QuestionLevelController;
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
@@ -17,8 +18,12 @@ use App\Http\Controllers\ExamController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChartController;
+use App\Http\Controllers\InstructorExamController;
+use App\Http\Controllers\InstructorQuestionController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\QuestionTypeController;
 use App\Http\Controllers\StudentAssignmentController;
+use App\Http\Controllers\TakeController;
 use App\Http\Controllers\TaskController;
 
 Route::get('/', function () {
@@ -43,9 +48,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/student_profile', [StudentController::class, 'student_profile'])->name('student.profile');
     Route::get('/student_course', [StudentController::class, 'student_course'])->name('student.course');
-    Route::get('/question_level', [StudentController::class, 'question_level'])->name('student.question_level');
-    Route::get('/question_type', [StudentController::class, 'question_type'])->name('student.question_type');
-    Route::get('take', [StudentController::class, 'take'])->name('student.take');
     Route::get('/quiz', [StudentController::class, 'quiz'])->name('student.quiz');
     Route::get('/calendar', [StudentController::class, 'calendar'])->name('student.calendar');
     Route::get('/forum', [StudentController::class, 'forum'])->name('student.forum');
@@ -148,6 +150,32 @@ Route::middleware('auth')->group(function () {
 
     //student Assignments
     Route::get('Tasks', [TaskController::class, 'index'])->name('Task.index');
+    //questionlevels
+    Route::get('student/question_level', [QuestionLevelController::class, 'index'])->name('student.question_level');
+    //question type
+    Route::get('student/question_type', [QuestionTypeController::class, 'index'])->name('student.question_type');
+
+    //take exam
+    Route::get('student', [TakeController::class, 'index'])->name('student.take');
+
+
+    //instructorExam
+    Route::get('instructor_exam', [InstructorExamController::class, 'index'])->name('instructor_exam.index');
+    Route::get('instructor_exam/create', [InstructorExamController::class, 'create'])->name('instructor_exam.create');
+    Route::post('instructor_exam', [InstructorExamController::class, 'store'])->name('instructor_exam.store');
+    Route::get('instructor_exam/view', [InstructorExamController::class, 'view'])->name('instructor_exam.view');
+    Route::put('instructor_exam', [InstructorExamController::class, 'update'])->name('instructor_exam.update');
+    Route::delete('instructor_exam', [InstructorExamController::class, 'delete'])->name('instructor_exam.delete');
+
+    //instructorQuestion
+    Route::get('instructor_questions', [InstructorQuestionController::class, 'index'])->name('instructor_questions.index');
+    Route::get('instructor_questions/create', [InstructorQuestionController::class, 'create'])->name('instructor_questions.create');
+    Route::post('instructor_questions', [InstructorQuestionController::class, 'store'])->name('instructor_questions.store');
+    Route::get('instructor_questions/view', [InstructorQuestionController::class, 'view'])->name('instructor_questions.view');
+    Route::put('instructor_questions', [InstructorQuestionController::class, 'update'])->name('instructor_questions.update');
+    Route::delete('instructor_questions', [InstructorQuestionController::class, 'delete'])->name('instructor_questions.delete');
+
+
 
 });
 require __DIR__ . '/auth.php';

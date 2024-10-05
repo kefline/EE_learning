@@ -28,9 +28,9 @@
                     <span class="nav-text">Exams</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="/question_level">Question Levels</a></li>
-                    <li><a href="/question_type">Question Types</a></li>
-                    <li><a href="/take">Take Exam</a></li>
+                    <li><a href="{{route('student.question_level')}}">Question Levels</a></li>
+                    <li><a href="{{route('student.question_type')}}">Question Types</a></li>
+                    <li><a href="{{route('student.take')}}">Take Exam</a></li>
                     <li><a href="/quiz">Quiz</a></li>
                     <li><a href="/calendar">Calendar</a></li>
                 </ul>
